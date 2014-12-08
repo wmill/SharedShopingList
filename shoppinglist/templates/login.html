@@ -1,0 +1,31 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundation | Welcome</title>
+    <link rel="stylesheet" href="/static/vendor/foundation/css/foundation.css" />
+    <script src="/static/vendor/foundation/js/vendor/modernizr.js"></script>
+    <link rel="stylesheet" href="/static/shoppinglist.css"></link>
+  </head>
+  <body>
+    <div class="row flash-error">
+      <div class="large-12 columns">
+        {{flash_error}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns text-right">
+        <form name='login-form' method='POST'>
+          {% csrf_token %}
+          <input type='text' name='username' placeholder='User Name'><br />
+          <input type='password' name='password' placeholder='Password'><br />
+          <input type='submit' name='submit' value='Submit' class='small button' />
+        </form>
+      </div>
+    </div>
+
+    <script src="/static/vendor/foundation/js/vendor/jquery.js"></script>
+    <script src="/static/vendor/foundation/js/foundation.min.js"></script>
+  </body>
+</html>

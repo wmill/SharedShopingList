@@ -1,0 +1,16 @@
+.shopping-items {
+  padding: 10px 0;
+}
+
+.shopping-item-div {
+  padding: 4px 0;
+}
+
+.shopping-item-div:nth-child(odd)  {
+  background-color: #f7f7f7;
+}
+
+.flash-error {
+  color: #fff;
+  background-color: #FF5454;
+}

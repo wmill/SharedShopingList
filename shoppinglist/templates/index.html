@@ -6,52 +6,59 @@
     <title>Foundation | Welcome</title>
     <link rel="stylesheet" href="/static/vendor/foundation/css/foundation.css" />
     <script src="/static/vendor/foundation/js/vendor/modernizr.js"></script>
+    <link rel="stylesheet" href="/static/shoppinglist.css"></link>
   </head>
   <body>
 
 
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class='title-area'>
+        <li class="name"><h1><a href="#">Shopping List</a></h1></li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="right">
+          <li ><a href="/logout">Logout</a></li>
+        </ul>
+      </section>
+    </nav>
 
-    <div class="row">
-      <div class="large-12 columns">
-        Shopping List
-      </div>
-    </div>
     
 
-
-    {% for item in shopping_items %}
-    <div id='shopping-item-{{item.id}}' class='shopping-item-div'>
-      <div class="row view-item" data-item-id='{{item.id}}'>
-        <div class="large-10 columns">
-          {{item.name}}
-        </div>
-        <div class="large-2 columns text-right">
-          <span class="label">{{item.user}}</span>
-        </div>
-      </div>
-      <div class="row edit-item hide">
-        <form method='POST' action='update'>
-          {% csrf_token %}
-          <input type='hidden' name='item_id' value='{{item.id}}' />
+    <div class='shopping-items'>
+      {% for item in shopping_items %}
+      <div id='shopping-item-{{item.id}}' class='shopping-item-div'>
+        <div class="row view-item" data-item-id='{{item.id}}'>
           <div class="large-10 columns">
-            <input type='text' name='item_name' value='{{item.name}}' />
+            {{item.name}}
           </div>
-          <div class="large-2 columns">
-            <input type='submit' name='submit'  value='Submit' class='button' />
-            <input type='submit' name='delete' class='button shopping-item-delete' value='Delete' />
+          <div class="large-2 columns text-right">
+            <span class="label">{{item.user}}</span>
           </div>
-        </form>
+        </div>
+        <div class="row edit-item hide">
+          <form method='POST' action='update'>
+            {% csrf_token %}
+            <input type='hidden' name='item_id' value='{{item.id}}' />
+            <div class="large-12 columns text-right">
+              <input type='text' name='item_name' value='{{item.name}}' />
+              <br />
+              <input type='submit' name='submit'  value='Submit' class='tiny button' />
+              <input type='submit' name='delete' class='tiny button' value='Delete' />
+            </div>
+          </form>
+        </div>
       </div>
+      {% endfor %}
     </div>
-    {% endfor %}
 
 
     <div class="row">
-      <div class="large-12 columns">
+      <div class="large-12 columns text-right">
         <form name='new-item' method='POST' action='create'>
           {% csrf_token %}
           <input type='text' name='item_name'><br>
-          <input type='submit' name='submit' value='Submit' class='button' />
+          <input type='submit' name='submit' value='Submit' class='small button' />
         </form>
       </div>
     </div>
