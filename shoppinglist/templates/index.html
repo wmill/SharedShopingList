@@ -41,7 +41,7 @@
             {% csrf_token %}
             <input type='hidden' name='item_id' value='{{item.id}}' />
             <div class="large-12 columns text-right">
-              <input type='text' name='item_name' value='{{item.name}}' />
+              <input type='text' name='item_name' value='{{item.name}}' class='new-item-name'/>
               <br />
               <input type='submit' name='submit'  value='Submit' class='tiny button' />
               <input type='submit' name='delete' class='tiny button' value='Delete' />

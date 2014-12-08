@@ -31,8 +31,6 @@ def update(request):
 
     item = get_object_or_404(ShoppingItem, pk=item_id)
 
-    print request.POST
-
     if 'submit' in request.POST:
       item.name = item_name
       item.user = user

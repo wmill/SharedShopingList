@@ -22,6 +22,13 @@ $(document).ready(function(){
     $(target_selector + ' .view-item').addClass('hide');
     $(target_selector + ' .edit-item').removeClass('hide');
 
+    var $target_input = $(target_selector + ' .new-item-name');
+    $target_input.focus();
+
+    //trick to set focus to the end
+    $target_input.val($target_input.val());
+
+
 
     //don't bubble
     e.stopPropagation();
