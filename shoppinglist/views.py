@@ -49,6 +49,15 @@ def update(request):
   return redirect('index')
 
 
+@login_required
+def clear(request):
+  if request.method == "POST":
+    
+    ShoppingItem.objects.all().delete()
+
+  return redirect('index')
+
+
 def logout_view(request):
   logout(request)
   return redirect('login')

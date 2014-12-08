@@ -8,5 +8,6 @@ urlpatterns = patterns('',
     url(r'^update$', views.update, name='update'),
     url(r'^logout$', views.logout_view, name='logout'),
     url(r'^accounts/login/?$', views.login_view, name='login'),
+    url(r'^clear$', views.clear, name='clear'),
 
 )
