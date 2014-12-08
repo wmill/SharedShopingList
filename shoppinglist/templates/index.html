@@ -14,21 +14,35 @@
     <div class="row">
       <div class="large-12 columns">
         Shopping List
-        {{shopping_items}}
       </div>
     </div>
     
 
 
-
-    <div class="row">
-      <div class="large-10 columns">
-        Shopping Item
+    {% for item in shopping_items %}
+    <div id='#shopping-item-{{item.id}}'>
+      <div class="row">
+        <div class="large-10 columns">
+          {{item.name}}
+        </div>
+        <div class="large-2 columns text-right">
+          <span class="label">{{item.user}}</span>
+        </div>
       </div>
-      <div class="large-2 columns text-right">
-        <span class="label">Suzy</span>
+      <div class="row hide">
+        <form method='POST' action='update'>
+          <input type='hidden' name='item_id' value='{{item.id}}' />
+          <div class="large-10 columns">
+            <input type='text' name='item_name' value='{{item.name}}' />
+          </div>
+          <div class="large-2 columns">
+            <input type='submit' name='submit'  value='Submit' class='button' />
+            <input type='button' class='button shopping-item-delete' value='Delete' />
+          </div>
+        </form>
       </div>
     </div>
+    {% endfor %}
 
 
     <div class="row">
@@ -43,10 +57,10 @@
 
     <div class="row">
       <div class="large-12 columns">
-        <form name='new-item' method='POST'>
+        <form name='new-item' method='POST' action='create'>
           {% csrf_token %}
           <input type='text' name='item_name'><br>
-          <input type='submit' name='submit' value='Submit' class='button'>
+          <input type='submit' name='submit' value='Submit' class='button' />
         </form>
       </div>
     </div>
