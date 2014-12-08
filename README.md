@@ -1,3 +1,7 @@
+#Instructions
+
+##Installation
+
 Make sure you have django >=1.7 installed, run
 
     python -c "import django; print(django.get_version())"
@@ -42,3 +46,19 @@ I didn't build up CRUD forms for users, but the django admin works.  You just ha
 Then go to 
 
     http://localhost:8000/admin
+
+##Features to add
+
+- Websockets for realtime updates would be neat, although a single family is unlikely to need them.
+
+- Archive shopping lists instead of just deleting them.  Adding multiple lists to the main UI will just clutter things, but it'd be usefull to save old items and use them for autocomplete guesses.
+
+- Proper in app CRUD for accounts
+
+- Add in a full REST API for a mobile app to use
+
+- Support optionally saving UPC codes.  Use the browser camera API to capture UPC codes of items that need to be replaced. This would require a JS / Server OCR solution.  I beleive that OpenCV can read Code39 barcodes.
+
+##Screenshots
+
+Screenshots are located in the screenshots directory.
