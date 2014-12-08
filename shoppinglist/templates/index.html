@@ -20,8 +20,8 @@
 
 
     {% for item in shopping_items %}
-    <div id='#shopping-item-{{item.id}}'>
-      <div class="row">
+    <div id='shopping-item-{{item.id}}' class='shopping-item-div'>
+      <div class="row view-item" data-item-id='{{item.id}}'>
         <div class="large-10 columns">
           {{item.name}}
         </div>
@@ -29,30 +29,21 @@
           <span class="label">{{item.user}}</span>
         </div>
       </div>
-      <div class="row hide">
+      <div class="row edit-item hide">
         <form method='POST' action='update'>
+          {% csrf_token %}
           <input type='hidden' name='item_id' value='{{item.id}}' />
           <div class="large-10 columns">
             <input type='text' name='item_name' value='{{item.name}}' />
           </div>
           <div class="large-2 columns">
             <input type='submit' name='submit'  value='Submit' class='button' />
-            <input type='button' class='button shopping-item-delete' value='Delete' />
+            <input type='submit' name='delete' class='button shopping-item-delete' value='Delete' />
           </div>
         </form>
       </div>
     </div>
     {% endfor %}
-
-
-    <div class="row">
-      <div class="large-10 columns">
-        <input type='text' name='shoppingitem_name' />
-      </div>
-      <div class="large-2 columns">
-        <a href='#' class='button tiny'>OK</a>
-      </div>
-    </div>
 
 
     <div class="row">
@@ -67,8 +58,6 @@
 
     <script src="/static/vendor/foundation/js/vendor/jquery.js"></script>
     <script src="/static/vendor/foundation/js/foundation.min.js"></script>
-    <script>
-      $(document).foundation();
-    </script>
+    <script src="/static/shoppinglist.js"></script>
   </body>
 </html>

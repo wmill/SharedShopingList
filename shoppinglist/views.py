@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from shoppinglist.models import ShoppingItem
 from django.contrib.auth import logout
-# Create your views here.
+from django.http import HttpResponse
+
 
 #@login_required
 def index(request):
@@ -23,6 +24,7 @@ def create(request):
 
 
 def update(request):
+  #this method also deletes
   if request.method == "POST":
     item_name = request.POST['item_name']
     item_id = request.POST['item_id']
@@ -30,10 +32,22 @@ def update(request):
 
     item = get_object_or_404(ShoppingItem, pk=item_id)
 
-    item.name = item_name
-    item.user = user
+    print request.POST
 
-    item.save()
+    if 'submit' in request.POST:
+      item.name = item_name
+      item.user = user
+
+      item.save()
+
+    elif 'delete' in request.POST:
+      item.delete()
+
+    else:
+      #form action missing
+      #TODO raise a 400 error
+      print "bad request"
+      pass
 
   return redirect('index')
 
@@ -51,4 +65,4 @@ def delete(request):
 
 def logout_view(request):
   logout(request)
-  return redirect('index')
+  return redirect('login_view')
